@@ -1,0 +1,1 @@
+this.Homeworks = new Meteor.Collection 'homeworks'

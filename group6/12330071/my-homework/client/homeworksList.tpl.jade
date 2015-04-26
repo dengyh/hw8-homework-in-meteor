@@ -1,0 +1,7 @@
+if isInRole 'user'
+  div(class="panel panel-primary")
+    div.panel-heading 作业列表
+    div.panel-body
+      div.list-group
+        each homeworkList
+          +homeworks

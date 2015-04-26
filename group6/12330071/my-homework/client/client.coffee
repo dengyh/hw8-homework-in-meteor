@@ -1,24 +1,26 @@
-Homeworks = new Mongo.Collection 'homeworks'
+Accounts.ui.config
+  passwordSignupFields: 'USERNAME_AND_EMAIL'
 
-Template.homework.helpers
-  homeworks: ->
-    Homeworks.find {},
-      sort:
-        time: -1
+Template.body.events
+  'click .add-homework': (event) ->
+    $('#create-modal').modal 'show'
 
-Template.teacher.events
-  'submit .new-homework': (event) ->
-    Homeworks.insert
+  'click #confirm-add': (event) ->
+    console.log 'llllll'
+    do $('#create-form').submit
+
+  'submit #create-form': (event) ->
     title = event.target.title.value
     content = event.target.content.value
-    date = event.target.content.value
-    time = event.target.content.value
+    date = event.target.date.value
+    time = event.target.time.value
     Homeworks.insert
       title: title
       content: content
-      deadline: date + time
+      deadline: new Date date + ' ' + time
       time: new Date
       submissions: []
-
-Accounts.ui.config
-  passwordSignupFields: 'USERNAME_ONLY'
+    $('input').val ''
+    $('textarea').val ''
+    $('#create-modal').modal 'hide'
+    return false

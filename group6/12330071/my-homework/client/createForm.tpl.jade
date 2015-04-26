@@ -1,0 +1,25 @@
+div(class="modal fade" id="create-modal")
+  div(class="modal-dialog")
+    div(class="modal-content")
+      div(class="modal-header")
+        button(type="button", class="close", data-dismiss="modal", aria-label="Close")
+          span(aria-hidden="true") &times;
+        h4(class="modal-title") 添加作业
+      div(class="modal-body")
+        form(method="post", id="create-form")
+          div.form-group
+            label(for="homework-title") 作业标题
+            input(type="text", class="form-control", name="title", id="homework-title", placeholder="Enter title")
+          div.form-group
+            label(for="homework-content") 作业要求
+            textarea(class="form-control", id="homework-content", name="content")
+          div.form-group
+            label(for="homework-deadline") 截至时间
+            div.row
+              div.col-md-4
+                input(type="date", class="form-control", name="date", id="homework-deadline", placeholder="YYYY-MM-DD")
+              div.col-md-4
+                input(type="time", class="form-control", name="time", id="homework-deadline", placeholder="HH:MM")
+      div(class="modal-footer")
+        button(type="button", class="btn btn-danger", data-dismiss="modal") 取消
+        button(type="button", class="btn btn-primary", id="confirm-add") 确定
